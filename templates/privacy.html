@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}Politique de Confidentialité{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h2 class="card-title mb-0">
+                        <i class="fas fa-shield-alt me-2"></i>
+                        Politique de Confidentialité
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="prose">
+                        <h4>Protection des Données</h4>
+                        <p class="mb-4">
+                            Nous nous engageons à protéger et respecter votre vie privée. Cette politique explique 
+                            comment nous collectons, utilisons et protégeons vos informations personnelles.
+                        </p>
+
+                        <h5>Collecte des Informations</h5>
+                        <p>Nous collectons les informations suivantes :</p>
+                        <ul>
+                            <li>Informations personnelles (nom, adresse e-mail, numéro de téléphone)</li>
+                            <li>Informations professionnelles (profession, expérience en investissement)</li>
+                            <li>Informations financières (montant d'investissement estimé)</li>
+                            <li>Documents d'identité (pour vérification)</li>
+                            <li>Localisation (ville/pays de résidence, nationalité)</li>
+                        </ul>
+
+                        <h5>Utilisation des Données</h5>
+                        <p>Vos données sont utilisées exclusivement pour :</p>
+                        <ul>
+                            <li>Traiter votre demande d'inscription en tant qu'investisseur</li>
+                            <li>Vous contacter concernant des opportunités d'investissement</li>
+                            <li>Vérifier votre identité et votre éligibilité</li>
+                            <li>Vous inviter à rejoindre notre groupe WhatsApp d'investisseurs</li>
+                            <li>Améliorer nos services</li>
+                        </ul>
+
+                        <h5>Protection des Données</h5>
+                        <p>Nous mettons en place les mesures de sécurité suivantes :</p>
+                        <ul>
+                            <li>Chiffrement des données sensibles</li>
+                            <li>Accès restreint aux informations personnelles</li>
+                            <li>Stockage sécurisé des documents d'identité</li>
+                            <li>Authentification obligatoire pour l'accès administrateur</li>
+                            <li>Sauvegardes régulières et sécurisées</li>
+                        </ul>
+
+                        <h5>Partage des Informations</h5>
+                        <p>
+                            Nous ne vendons, n'échangeons ni ne louons vos informations personnelles à des tiers. 
+                            Vos données peuvent être partagées uniquement dans les cas suivants :
+                        </p>
+                        <ul>
+                            <li>Avec votre consentement explicite</li>
+                            <li>Pour se conformer à une obligation légale</li>
+                            <li>Pour protéger nos droits et notre sécurité</li>
+                        </ul>
+
+                        <h5>Conservation des Données</h5>
+                        <p>
+                            Nous conservons vos informations personnelles aussi longtemps que nécessaire pour 
+                            les finalités décrites dans cette politique, sauf si une période de conservation 
+                            plus longue est requise ou autorisée par la loi.
+                        </p>
+
+                        <h5>Vos Droits</h5>
+                        <p>Vous avez le droit de :</p>
+                        <ul>
+                            <li>Accéder à vos données personnelles</li>
+                            <li>Rectifier des informations inexactes</li>
+                            <li>Demander la suppression de vos données</li>
+                            <li>Vous opposer au traitement de vos données</li>
+                            <li>Demander la portabilité de vos données</li>
+                        </ul>
+
+                        <h5>WhatsApp et Communication</h5>
+                        <p>
+                            En vous inscrivant, vous acceptez de recevoir des invitations à rejoindre notre 
+                            groupe WhatsApp d'investisseurs. Vous pouvez vous désinscrire à tout moment en 
+                            quittant le groupe ou en nous contactant directement.
+                        </p>
+
+                        <h5>Modifications de cette Politique</h5>
+                        <p>
+                            Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. 
+                            Les modifications prendront effet immédiatement après leur publication sur cette page.
+                        </p>
+
+                        <h5>Contact</h5>
+                        <p>
+                            Pour toute question concernant cette politique de confidentialité ou pour exercer vos droits, 
+                            veuillez nous contacter via notre groupe WhatsApp ou par e-mail.
+                        </p>
+
+                        <div class="alert alert-info mt-4">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Dernière mise à jour :</strong> 01/09/2025
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('index') }}" class="btn btn-primary">
+                        <i class="fas fa-arrow-left me-2"></i>
+                        Retour au formulaire
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

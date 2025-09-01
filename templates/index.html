@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block title %}Inscription Investisseurs{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    {% if success %}
+    <!-- Success Message with WhatsApp Redirect -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-success">
+                <div class="card-body text-center">
+                    <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                    <h2 class="text-success mt-3">Inscription Réussie !</h2>
+                    <p class="lead">Votre enregistrement a été effectué avec succès.</p>
+                    <p>Vous allez être redirigé vers notre groupe WhatsApp dans <span id="countdown">10</span> secondes.</p>
+                    
+                    <div class="mt-4">
+                        <a href="{{ whatsapp_link }}" class="btn btn-success btn-lg me-3" id="whatsapp-btn">
+                            <i class="fab fa-whatsapp me-2"></i>
+                            Rejoindre le groupe WhatsApp
+                        </a>
+                        <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+                            Nouvelle inscription
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let countdown = 10;
+        const countdownElement = document.getElementById('countdown');
+        const whatsappBtn = document.getElementById('whatsapp-btn');
+        
+        const timer = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            
+            if (countdown <= 0) {
+                clearInterval(timer);
+                window.location.href = whatsappBtn.href;
+            }
+        }, 1000);
+    </script>
+    
+    {% else %}
+    <!-- Registration Form -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-user-plus me-2"></i>
+                        Formulaire d'Inscription Investisseurs
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-4">
+                        Veuillez remplir tous les champs obligatoires pour rejoindre notre groupe d'investisseurs.
+                    </p>
+                    
+                    <form method="POST" enctype="multipart/form-data" novalidate>
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="row">
+                            <!-- Full Name -->
+                            <div class="col-md-6 mb-3">
+                                {{ form.full_name.label(class="form-label") }}
+                                {{ form.full_name(class="form-control" + (" is-invalid" if form.full_name.errors else "")) }}
+                                {% for error in form.full_name.errors %}
+                                    <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- WhatsApp Number -->
+                            <div class="col-md-6 mb-3">
+                                {{ form.whatsapp_number.label(class="form-label") }}
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </span>
+                                    {{ form.whatsapp_number(class="form-control" + (" is-invalid" if form.whatsapp_number.errors else ""), placeholder="+33 6 12 34 56 78") }}
+                                </div>
+                                {% for error in form.whatsapp_number.errors %}
+                                    <div class="invalid-feedback d-block">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="mb-3">
+                            {{ form.email.label(class="form-label") }}
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else "")) }}
+                            </div>
+                            {% for error in form.email.errors %}
+                                <div class="invalid-feedback d-block">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="row">
+                            <!-- Nationality -->
+                            <div class="col-md-6 mb-3">
+                                {{ form.nationality.label(class="form-label") }}
+                                {{ form.nationality(class="form-control" + (" is-invalid" if form.nationality.errors else "")) }}
+                                {% for error in form.nationality.errors %}
+                                    <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- City/Country -->
+                            <div class="col-md-6 mb-3">
+                                {{ form.city_country.label(class="form-label") }}
+                                {{ form.city_country(class="form-control" + (" is-invalid" if form.city_country.errors else "")) }}
+                                {% for error in form.city_country.errors %}
+                                    <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <!-- Profession -->
+                        <div class="mb-3">
+                            {{ form.profession.label(class="form-label") }}
+                            {{ form.profession(class="form-control" + (" is-invalid" if form.profession.errors else "")) }}
+                            {% for error in form.profession.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="row">
+                            <!-- Investment Amount -->
+                            <div class="col-md-6 mb-3">
+                                {{ form.investment_amount.label(class="form-label") }}
+                                {{ form.investment_amount(class="form-select" + (" is-invalid" if form.investment_amount.errors else "")) }}
+                                {% for error in form.investment_amount.errors %}
+                                    <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Experience Level -->
+                            <div class="col-md-6 mb-3">
+                                {{ form.experience_level.label(class="form-label") }}
+                                {{ form.experience_level(class="form-select" + (" is-invalid" if form.experience_level.errors else "")) }}
+                                {% for error in form.experience_level.errors %}
+                                    <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <!-- Identity Document -->
+                            <div class="col-md-8 mb-3">
+                                {{ form.identity_document.label(class="form-label") }}
+                                {{ form.identity_document(class="form-control" + (" is-invalid" if form.identity_document.errors else "")) }}
+                                <div class="form-text">Formats acceptés : PDF, JPG, JPEG, PNG (max 16 MB)</div>
+                                {% for error in form.identity_document.errors %}
+                                    <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            
+                            <!-- Payment Method -->
+                            <div class="col-md-4 mb-3">
+                                {{ form.payment_method.label(class="form-label") }}
+                                {{ form.payment_method(class="form-select" + (" is-invalid" if form.payment_method.errors else "")) }}
+                                {% for error in form.payment_method.errors %}
+                                    <div class="invalid-feedback">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Remarks -->
+                        <div class="mb-3">
+                            {{ form.additional_remarks.label(class="form-label") }}
+                            {{ form.additional_remarks(class="form-control", rows="3", placeholder="Informations supplémentaires ou questions...") }}
+                        </div>
+                        
+                        <!-- Terms and Conditions -->
+                        <div class="mb-4">
+                            <div class="form-check">
+                                {{ form.terms_accepted(class="form-check-input" + (" is-invalid" if form.terms_accepted.errors else "")) }}
+                                {{ form.terms_accepted.label(class="form-check-label") }}
+                                <a href="{{ url_for('privacy') }}" target="_blank" class="text-decoration-none">
+                                    (Voir la politique de confidentialité)
+                                </a>
+                                {% for error in form.terms_accepted.errors %}
+                                    <div class="invalid-feedback d-block">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            {{ form.submit(class="btn btn-primary btn-lg") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
