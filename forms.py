@@ -20,14 +20,59 @@ class InvestorRegistrationForm(FlaskForm):
         Email(message='Veuillez entrer une adresse e-mail valide')
     ])
     
-    nationality = StringField('Nationalité', validators=[
-        DataRequired(message='La nationalité est obligatoire'),
-        Length(min=2, max=50, message='La nationalité doit contenir entre 2 et 50 caractères')
+    nationality = SelectField('Nationalité', validators=[
+        DataRequired(message='Veuillez sélectionner votre nationalité')
+    ], choices=[
+        ('', 'Sélectionnez votre nationalité'),
+        ('algérienne', 'Algérienne'),
+        ('béninoise', 'Béninoise'),
+        ('burkinabé', 'Burkinabé'),
+        ('camerounaise', 'Camerounaise'),
+        ('centrafricaine', 'Centrafricaine'),
+        ('comorienne', 'Comorienne'),
+        ('congolaise_brazzaville', 'Congolaise (Brazzaville)'),
+        ('congolaise_kinshasa', 'Congolaise (Kinshasa)'),
+        ('djiboutienne', 'Djiboutienne'),
+        ('égyptienne', 'Égyptienne'),
+        ('française', 'Française'),
+        ('gabonaise', 'Gabonaise'),
+        ('ghanéenne', 'Ghanéenne'),
+        ('guinéenne', 'Guinéenne'),
+        ('ivoirienne', 'Ivoirienne'),
+        ('malienne', 'Malienne'),
+        ('marocaine', 'Marocaine'),
+        ('mauritanienne', 'Mauritanienne'),
+        ('nigériane', 'Nigériane'),
+        ('nigérienne', 'Nigérienne'),
+        ('sénégalaise', 'Sénégalaise'),
+        ('tchadienne', 'Tchadienne'),
+        ('togolaise', 'Togolaise'),
+        ('tunisienne', 'Tunisienne'),
+        ('autre', 'Autre')
     ])
     
-    city_country = StringField('Ville / Pays de résidence', validators=[
-        DataRequired(message='La ville/pays de résidence est obligatoire'),
-        Length(min=2, max=100, message='La ville/pays doit contenir entre 2 et 100 caractères')
+    city_country = SelectField('Ville / Pays de résidence', validators=[
+        DataRequired(message='Veuillez sélectionner votre ville/pays de résidence')
+    ], choices=[
+        ('', 'Sélectionnez votre ville/pays'),
+        ('abidjan_cote_ivoire', 'Abidjan, Côte d\'Ivoire'),
+        ('accra_ghana', 'Accra, Ghana'),
+        ('bamako_mali', 'Bamako, Mali'),
+        ('bangui_centrafrique', 'Bangui, République Centrafricaine'),
+        ('brazzaville_congo', 'Brazzaville, Congo'),
+        ('cotonou_benin', 'Cotonou, Bénin'),
+        ('dakar_senegal', 'Dakar, Sénégal'),
+        ('douala_cameroun', 'Douala, Cameroun'),
+        ('kinshasa_rdc', 'Kinshasa, RD Congo'),
+        ('libreville_gabon', 'Libreville, Gabon'),
+        ('lome_togo', 'Lomé, Togo'),
+        ('ndjamena_tchad', 'N\'Djamena, Tchad'),
+        ('niamey_niger', 'Niamey, Niger'),
+        ('nouakchott_mauritanie', 'Nouakchott, Mauritanie'),
+        ('ouagadougou_burkina', 'Ouagadougou, Burkina Faso'),
+        ('paris_france', 'Paris, France'),
+        ('yaounde_cameroun', 'Yaoundé, Cameroun'),
+        ('autre', 'Autre')
     ])
     
     profession = StringField('Profession / Activité principale', validators=[
@@ -39,12 +84,12 @@ class InvestorRegistrationForm(FlaskForm):
         DataRequired(message='Veuillez sélectionner un montant')
     ], choices=[
         ('', 'Sélectionnez un montant'),
-        ('1000-5000', '1 000 - 5 000 €'),
-        ('5000-10000', '5 000 - 10 000 €'),
-        ('10000-25000', '10 000 - 25 000 €'),
-        ('25000-50000', '25 000 - 50 000 €'),
-        ('50000-100000', '50 000 - 100 000 €'),
-        ('100000+', '100 000 € et plus')
+        ('500000-2500000', '500 000 - 2 500 000 FCFA'),
+        ('2500000-5000000', '2 500 000 - 5 000 000 FCFA'),
+        ('5000000-12500000', '5 000 000 - 12 500 000 FCFA'),
+        ('12500000-25000000', '12 500 000 - 25 000 000 FCFA'),
+        ('25000000-50000000', '25 000 000 - 50 000 000 FCFA'),
+        ('50000000+', '50 000 000 FCFA et plus')
     ])
     
     experience_level = SelectField('Expérience en investissement', validators=[
