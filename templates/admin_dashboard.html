@@ -9,7 +9,7 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2>
                     <i class="fas fa-tachometer-alt me-2"></i>
-                    Dashboard Administrateur
+                    Administrateur
                 </h2>
                 <div>
                     <a href="{{ url_for('export_csv') }}" class="btn btn-success me-2">
@@ -135,12 +135,11 @@
                             <label class="form-label">Montant</label>
                             <select name="amount" class="form-select">
                                 <option value="">Tous</option>
-                                <option value="500000-2500000" {{ 'selected' if amount_filter == '500000-2500000' }}>500 000 - 2 500 000 FCFA</option>
-                                <option value="2500000-5000000" {{ 'selected' if amount_filter == '2500000-5000000' }}>2 500 000 - 5 000 000 FCFA</option>
-                                <option value="5000000-12500000" {{ 'selected' if amount_filter == '5000000-12500000' }}>5 000 000 - 12 500 000 FCFA</option>
-                                <option value="12500000-25000000" {{ 'selected' if amount_filter == '12500000-25000000' }}>12 500 000 - 25 000 000 FCFA</option>
-                                <option value="25000000-50000000" {{ 'selected' if amount_filter == '25000000-50000000' }}>25 000 000 - 50 000 000 FCFA</option>
-                                <option value="50000000+" {{ 'selected' if amount_filter == '50000000+' }}>50 000 000 FCFA et plus</option>
+                                <option value="100000" {{ 'selected' if amount_filter == '100000' }}>100 000 FCFA</option>
+                                <option value="200000" {{ 'selected' if amount_filter == '200000' }}>200 000 FCFA</option>
+                                <option value="300000" {{ 'selected' if amount_filter == '300000' }}>300 000 FCFA</option>
+                                <option value="400000" {{ 'selected' if amount_filter == '400000' }}>400 000 FCFA</option>
+                                <option value="5000000+" {{ 'selected' if amount_filter == '5000000+' }}>5000000 FCFA et plus</option>
                             </select>
                         </div>
                         <div class="col-md-2">
@@ -205,12 +204,12 @@
                                     <td>{{ investor.nationality }}</td>
                                     <td>
                                         <span class="badge bg-primary">
-                                            {% if investor.investment_amount == '500000-2500000' %}0.5-2.5M FCFA
-                                            {% elif investor.investment_amount == '2500000-5000000' %}2.5-5M FCFA
-                                            {% elif investor.investment_amount == '5000000-12500000' %}5-12.5M FCFA
-                                            {% elif investor.investment_amount == '12500000-25000000' %}12.5-25M FCFA
-                                            {% elif investor.investment_amount == '25000000-50000000' %}25-50M FCFA
-                                            {% elif investor.investment_amount == '50000000+' %}50M+ FCFA
+                                            {% if investor.investment_amount == '100000' %}100K FCFA
+                                            {% elif investor.investment_amount == '200000' %}200K FCFA
+                                            {% elif investor.investment_amount == '300000' %}300K FCFA
+                                            {% elif investor.investment_amount == '400000' %}400K FCFA
+                                            {% elif investor.investment_amount == '500000' %}500K FCFA
+                                            {% elif investor.investment_amount == '5000000+' %}5M+ FCFA
                                             {% else %}{{ investor.investment_amount }}
                                             {% endif %}
                                         </span>

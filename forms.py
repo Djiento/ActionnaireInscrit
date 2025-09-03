@@ -84,12 +84,12 @@ class InvestorRegistrationForm(FlaskForm):
         DataRequired(message='Veuillez sélectionner un montant')
     ], choices=[
         ('', 'Sélectionnez un montant'),
-        ('500000-2500000', '500 000 - 2 500 000 FCFA'),
-        ('2500000-5000000', '2 500 000 - 5 000 000 FCFA'),
-        ('5000000-12500000', '5 000 000 - 12 500 000 FCFA'),
-        ('12500000-25000000', '12 500 000 - 25 000 000 FCFA'),
-        ('25000000-50000000', '25 000 000 - 50 000 000 FCFA'),
-        ('50000000+', '50 000 000 FCFA et plus')
+        ('100000', '100 000 FCFA'),
+        ('200000', '200 000 FCFA'),
+        ('300000', '300 000 FCFA'),
+        ('400000', '400 000 FCFA'),
+        ('500000', '500 000 FCFA'),
+        ('5000000+', '5 000 000 FCFA et plus')
     ])
     
     experience_level = SelectField('Expérience en investissement', validators=[

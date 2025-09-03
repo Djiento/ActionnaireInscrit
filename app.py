@@ -52,9 +52,9 @@ with app.app_context():
     
     if not Admin.query.filter_by(username='admin').first():
         admin_user = Admin(
-            username='admin',
-            email='admin@example.com',
-            password_hash=generate_password_hash('admin123')
+            username='djiento',
+            email='abangadj@gmail.com',
+            password_hash=generate_password_hash('Victoire12@@')
         )
         db.session.add(admin_user)
         db.session.commit()
