@@ -1,7 +1,7 @@
 [project]
-name = "ActionnaireInscrit"
-version = "1.12.0"
-description = "Application web basée sur Flask pour la gestion des inscriptions d'investisseurs."
+name = "repl-nix-workspace"
+version = "0.1.0"
+description = "application web basée sur Flask pour la gestion des inscriptions d'investisseurs"
 requires-python = ">=3.11"
 dependencies = [
     "email-validator>=2.3.0",
