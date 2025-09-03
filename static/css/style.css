@@ -333,6 +333,30 @@ footer a:hover {
     outline-offset: 2px;
 }
 
+/* Delete button styling */
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    border: none;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #c82333 0%, #b21e2f 100%);
+    transform: translateY(-1px);
+}
+
+.btn-group .btn {
+    margin-right: 2px;
+}
+
+.btn-group .btn:last-child {
+    margin-right: 0;
+}
+
+/* Confirmation dialog styling */
+.delete-form {
+    display: inline-block;
+}
+
 /* Error states */
 .is-invalid {
     border-color: var(--danger-color) !important;

@@ -9,7 +9,7 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2>
                     <i class="fas fa-tachometer-alt me-2"></i>
-                    Administrateur
+                    Dashboard Administrateur
                 </h2>
                 <div>
                     <a href="{{ url_for('export_csv') }}" class="btn btn-success me-2">
@@ -19,7 +19,7 @@
                     <span class="text-muted">Bienvenue, {{ current_user.username }}</span>
                 </div>
             </div>
-            
+
             <!-- Statistics Cards -->
             <div class="row mb-4">
                 <div class="col-md-4">
@@ -68,7 +68,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- WhatsApp Group Management -->
             <div class="row mb-4">
                 <div class="col-12">
@@ -105,7 +105,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Search and Filters -->
             <div class="card mb-4">
                 <div class="card-header">
@@ -118,8 +118,8 @@
                     <form method="GET" class="row g-3">
                         <div class="col-md-4">
                             <label class="form-label">Rechercher</label>
-                            <input type="text" name="search" class="form-control" 
-                                   value="{{ search }}" 
+                            <input type="text" name="search" class="form-control"
+                                   value="{{ search }}"
                                    placeholder="Nom, email ou WhatsApp...">
                         </div>
                         <div class="col-md-3">
@@ -135,11 +135,12 @@
                             <label class="form-label">Montant</label>
                             <select name="amount" class="form-select">
                                 <option value="">Tous</option>
-                                <option value="100000" {{ 'selected' if amount_filter == '100000' }}>100 000 FCFA</option>
-                                <option value="200000" {{ 'selected' if amount_filter == '200000' }}>200 000 FCFA</option>
-                                <option value="300000" {{ 'selected' if amount_filter == '300000' }}>300 000 FCFA</option>
-                                <option value="400000" {{ 'selected' if amount_filter == '400000' }}>400 000 FCFA</option>
-                                <option value="5000000+" {{ 'selected' if amount_filter == '5000000+' }}>5000000 FCFA et plus</option>
+                                <option value="500000-2500000" {{ 'selected' if amount_filter == '500000-2500000' }}>500 000 - 2 500 000 FCFA</option>
+                                <option value="2500000-5000000" {{ 'selected' if amount_filter == '2500000-5000000' }}>2 500 000 - 5 000 000 FCFA</option>
+                                <option value="5000000-12500000" {{ 'selected' if amount_filter == '5000000-12500000' }}>5 000 000 - 12 500 000 FCFA</option>
+                                <option value="12500000-25000000" {{ 'selected' if amount_filter == '12500000-25000000' }}>12 500 000 - 25 000 000 FCFA</option>
+                                <option value="25000000-50000000" {{ 'selected' if amount_filter == '25000000-50000000' }}>25 000 000 - 50 000 000 FCFA</option>
+                                <option value="50000000+" {{ 'selected' if amount_filter == '50000000+' }}>50 000 000 FCFA et plus</option>
                             </select>
                         </div>
                         <div class="col-md-2">
@@ -152,7 +153,7 @@
                     </form>
                 </div>
             </div>
-            
+
             <!-- Investors Table -->
             <div class="card">
                 <div class="card-header">
@@ -190,7 +191,7 @@
                                         <small class="text-muted">{{ investor.city_country }}</small>
                                     </td>
                                     <td>
-                                        <a href="https://wa.me/{{ investor.whatsapp_number.replace(' ', '').replace('-', '').replace('(', '').replace(')', '') }}" 
+                                        <a href="https://wa.me/{{ investor.whatsapp_number.replace(' ', '').replace('-', '').replace('(', '').replace(')', '') }}"
                                            class="text-success text-decoration-none" target="_blank">
                                             <i class="fab fa-whatsapp me-1"></i>
                                             {{ investor.whatsapp_number }}
@@ -231,7 +232,7 @@
                                     </td>
                                     <td>
                                         {% if investor.identity_document %}
-                                            <a href="{{ url_for('uploaded_file', filename=investor.identity_document) }}" 
+                                            <a href="{{ url_for('uploaded_file', filename=investor.identity_document) }}"
                                                class="btn btn-sm btn-outline-primary" target="_blank">
                                                 <i class="fas fa-file me-1"></i>
                                                 Voir
@@ -246,17 +247,25 @@
                                     <td>
                                         <div class="btn-group" role="group">
                                             {% if settings and settings.whatsapp_group_link %}
-                                            <a href="{{ settings.whatsapp_group_link }}" 
-                                               class="btn btn-sm btn-success" target="_blank" 
+                                            <a href="{{ settings.whatsapp_group_link }}"
+                                               class="btn btn-sm btn-success" target="_blank"
                                                title="Inviter sur WhatsApp">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
                                             {% endif %}
-                                            <a href="mailto:{{ investor.email }}" 
-                                               class="btn btn-sm btn-primary" 
+                                            <a href="mailto:{{ investor.email }}"
+                                               class="btn btn-sm btn-primary"
                                                title="Envoyer un email">
                                                 <i class="fas fa-envelope"></i>
                                             </a>
+                                            <form method="POST" action="{{ url_for('delete_investor', investor_id=investor.id) }}"
+                                                  style="display: inline;"
+                                                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer {{ investor.full_name }} ? Cette action est irréversible et supprimera aussi tous ses documents.');">
+                                                <button type="submit" class="btn btn-sm btn-danger"
+                                                        title="Supprimer définitivement">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
