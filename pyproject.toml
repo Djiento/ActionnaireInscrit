@@ -1,5 +1,5 @@
 [project]
-name = "repl-nix-workspace"
+name = "actionnaireinscrit"
 version = "0.1.0"
 description = "application web basée sur Flask pour la gestion des inscriptions d'investisseurs"
 requires-python = ">=3.11"
@@ -16,3 +16,4 @@ dependencies = [
     "wtforms>=3.2.1",
 ]
 start = "gunicorn app:app"
+package-mode = false
